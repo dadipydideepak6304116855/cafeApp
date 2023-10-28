@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Info and Review Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        #cafeDetails, #reviewDetails {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        #reviewDetails {
+            margin-top: 30px;
+        }
+
+        .reviewBox {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 align="center">Cafe Info and Review Details</h1>
+
+    <div id="cafeDetails" th:object="${cafeInfo}">
+        <h2>Cafe Information</h2>
+        <p>Cafe ID: <span th:text="${cafeInfo.cafeId}"></span></p>
+        <p>Cafe Name: <span th:text="${cafeInfo.cafeName}"></span></p>
+        <p>Description: <span th:text="${cafeInfo.cafeDesc}"></span></p>
+    </div>
+
+    <div id="reviewDetails" th:each="review: ${cafeReview}">
+        <h2>Review and Ratings</h2>
+        
+        <div class="reviewBox">
+            <p>Review ID: <span th:text="${review.reviewId}"></span></p>
+            <p>Cafe ID: <span th:text="${review.cafeId}"></span></p>
+            <p>Cafe Rating: <span th:text="${review.cafeRating}"></span></p>
+            <p>Cafe Remarks: <span th:text="${review.cafeRemarks}"></span></p>
+        </div>
+
+        <!-- Additional review boxes can be added here for multiple reviews -->
+    </div>
+
+</body>
+</html>
